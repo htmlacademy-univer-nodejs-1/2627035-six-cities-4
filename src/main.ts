@@ -1,13 +1,15 @@
-import {commands} from './commands.ts';
-import {readLineInterface} from './consts.ts';
+import {HelpCommand, VersionCommand, ImportCommand, CLIApplication, GenerateCommand} from './cli/index.js';
 
-const start = async () => {
-  commands['--help']();
+function bootstrap(){
+  const cliApplication = new CLIApplication();
+  cliApplication.registerCommand([
+    new HelpCommand(),
+    new VersionCommand(),
+    new ImportCommand(),
+    new GenerateCommand()
+  ]);
 
-  readLineInterface.on('line', async (input: string) => {
-    const [command , ...params] = input.split(' ');
-    await commands[command as keyof typeof commands]?.(...params);
-  });
-};
+  cliApplication.processCommand(process.argv);
+}
 
-start();
+bootstrap();
