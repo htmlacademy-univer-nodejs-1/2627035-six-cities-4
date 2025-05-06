@@ -1,27 +1,28 @@
-import got from 'got';
+//import got from 'got';
+import axios from 'axios'
 
-import {MockServerData} from '../../shared/types/index.js';
-import {TsvFileWriter} from '../../shared/libs/file-writer/index.js';
-import {TsvOfferGenerator} from '../../shared/libs/offer-generator/index.js';
+import {MockServerData} from '../../shared/types';
+import {TsvFileWriter} from '../../shared/libs/file-writer';
+import {TsvOfferGenerator} from '../../shared/libs/offer-generator';
 
 import {Command} from './command.interface.js';
 
 export class GenerateCommand implements Command {
-  private initialData: MockServerData;
+  private initialData?: MockServerData;
 
   private async load(url: string) {
     try {
-      this.initialData = await got.get(url).json();
+      this.initialData = (await axios.get(url)).data;
     } catch {
       throw new Error(`Can't load data from ${url}`);
     }
   }
 
   private async write (filepath: string, offerCount: number) {
-    const tsvOfferGenerator = new TsvOfferGenerator(this.initialData);
+    const tsvOfferGenerator = new TsvOfferGenerator(this.initialData as MockServerData);
     const tsvFileWriter = new TsvFileWriter(filepath);
 
-    for(let i = 0; i < offerCount; i++) {
+    for (let i = 0; i < offerCount; i++) {
       await tsvFileWriter.write(tsvOfferGenerator.generate());
     }
   }

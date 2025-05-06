@@ -1,2 +1,2 @@
-export * from './common.js';
-export * from './createOffer.js';
+export * from './common';
+export * from './createOffer';
