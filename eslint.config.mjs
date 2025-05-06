@@ -39,6 +39,9 @@ export default defineConfig([globalIgnores(["**/dist/"]), {
     "@typescript-eslint/no-shadow": "off"
   },
 
+  ignores:[
+      "dist/"
+  ],
     languageOptions: {
         globals: {
             ...globals.node,
