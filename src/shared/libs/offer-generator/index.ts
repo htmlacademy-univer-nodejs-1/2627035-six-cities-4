@@ -1,2 +1,2 @@
 export * from './offer-generator.interface';
-export * from './tsv-offer-generator';
+export * from './tsv-offer-generator.ts';
