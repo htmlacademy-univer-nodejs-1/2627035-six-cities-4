@@ -1,4 +1,4 @@
-import {TsvFileReader} from '../../shared/libs/file-reader/tsv-file-reader.ts';
+import {TsvFileReader} from '../../shared/libs/file-reader/tsv-file-reader';
 import {createOffer, getErrorMessage} from '../../shared/helpers';
 
 import {Command} from './command.interface.js';

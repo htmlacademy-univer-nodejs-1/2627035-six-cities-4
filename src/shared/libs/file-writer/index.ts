@@ -1,1 +1,1 @@
-export * from './tsv-file-writer.ts';
+export * from './tsv-file-writer';
