@@ -22,7 +22,7 @@
     "@typescript-eslint/eslint-plugin": "8.32.0",
     "@typescript-eslint/parser": "8.32.0",
     "dayjs": "^1.11.13",
-    "eslint": "9.26.0",
+    "eslint": "9.0.0",
     "eslint-config-htmlacademy": "9.1.1",
     "json-server": "^1.0.0-beta.3",
     "rimraf": "5.0.1",
