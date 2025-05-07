@@ -1,4 +1,4 @@
-import { Command } from './command.interface.js';
+import { Command } from './command.interface';
 import { TsvFileReader } from '../../shared/libs/file-reader/tsv-file-reader';
 import { createOffer, getErrorMessage, getMongoURI } from '../../shared/helpers';
 import { UserService } from '../../shared/modules/user/user-service.interface.js';
@@ -8,7 +8,7 @@ import { DatabaseClient, MongoDatabaseClient } from '../../shared/libs/database-
 import { Logger } from '../../shared/libs/logger';
 import { ConsoleLogger } from '../../shared/libs/logger/console.logger';
 import { DefaultUserService, UserModel } from '../../shared/modules/user';
-import { DEFAULT_DB_PORT, DEFAULT_USER_PASSWORD } from './command.constant.js';
+import { DEFAULT_DB_PORT, DEFAULT_USER_PASSWORD } from './command.constant';
 import { Offer } from '../../shared/types';
 
 export class ImportCommand implements Command {
@@ -17,7 +17,7 @@ export class ImportCommand implements Command {
   private offerService: OfferService;
   private databaseClient: DatabaseClient;
   private logger: Logger;
-  private salt: string;
+  private salt: string = "salt";
 
   constructor() {
     this.onImportedLine = this.onImportedLine.bind(this);
@@ -43,6 +43,7 @@ export class ImportCommand implements Command {
 
   private async saveOffer(offer: Offer) {
     const categories: string[] = [];
+    console.log(this.salt)
     const user = await this.userService.findOrCreate({
       ...offer.user,
       password: DEFAULT_USER_PASSWORD
