@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 
-import {City, Facilities, HouseType, MockServerData, UserType} from '../../types';
-import {generateRandomValue, getRandomItem, getRandomItems} from '../../helpers';
+import {Facilities, MockServerData} from '../../types';
+import {generateRandomValue, getRandomItem} from '../../helpers';
 
 import {OfferGenerator} from './offer-generator.interface.js';
 
@@ -38,7 +38,7 @@ export class TsvOfferGenerator implements OfferGenerator {
     const username = getRandomItem(this.mockData.username);
     const email = getRandomItem(this.mockData.email);
     const avatarPath = getRandomItem(this.mockData.avatarImage);
-    const userType = getRandomItem(Object.keys(UserType));
+   // const userType = getRandomItem(Object.keys(UserType));
 
     return [
       title, description, postDate, previewPath, 'type', rentalCost, facilities, username, username, email, avatarPath].join('\t');
