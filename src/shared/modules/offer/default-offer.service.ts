@@ -6,7 +6,7 @@ import { DocumentType, types } from '@typegoose/typegoose';
 import { OfferEntity } from './offer.entity.js';
 import { CreateOfferDto } from './dto/create-offer.dto.js';
 import { UpdateOfferDto } from './dto/update-offer.dto.js';
-import { DEFAULT_OFFER_COUNT } from './offer.constant.js';
+const DEFAULT_OFFER_COUNT = 25;
 
 @injectable()
 export class DefaultOfferService implements OfferService {
