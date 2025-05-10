@@ -7,7 +7,7 @@ import { DefaultOfferService, OfferModel, OfferService } from '../../shared/modu
 import { DatabaseClient, MongoDatabaseClient } from '../../shared/libs/database-client';
 import { Logger } from '../../shared/libs/logger';
 import { ConsoleLogger } from '../../shared/libs/logger/console.logger';
-import { DefaultUserService, UserModel } from '../../shared/modules/user';
+import {CreateUserDto, DefaultUserService, UserModel} from '../../shared/modules/user';
 import { DEFAULT_DB_PORT, DEFAULT_USER_PASSWORD } from './command.constant';
 import { Offer } from '../../shared/types';
 
@@ -24,7 +24,7 @@ export class ImportCommand implements Command {
     this.onCompleteImport = this.onCompleteImport.bind(this);
 
     this.logger = new ConsoleLogger();
-    this.offerService = new DefaultOfferService(this.logger, OfferModel);
+    this.offerService = new DefaultOfferService(this.logger, OfferModel, CategoryModel);
     this.categoryService = new DefaultCategoryService(this.logger, CategoryModel);
     this.userService = new DefaultUserService(this.logger, UserModel);
     this.databaseClient = new MongoDatabaseClient(this.logger);
@@ -44,7 +44,7 @@ export class ImportCommand implements Command {
   private async saveOffer(offer: Offer) {
     const categories: string[] = [];
     console.log(this.salt)
-    const user = await this.userService.findOrCreate({
+    const user = await this.userService.findOrCreate(<CreateUserDto>{
       ...offer.user,
       password: DEFAULT_USER_PASSWORD
     }, this.salt);
