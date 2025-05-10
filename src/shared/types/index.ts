@@ -8,3 +8,4 @@ export * from './user';
 export * from './user-type';
 export * from './component'
 export * from './category.type';
+export * from './sort-type.enum';
