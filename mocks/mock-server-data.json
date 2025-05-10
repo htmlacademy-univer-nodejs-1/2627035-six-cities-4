@@ -1,0 +1,40 @@
+{
+  "api": {
+    "title": [
+      "Цивилизованная аренда от ДОМ РФ",
+      "Уютная студия!",
+      "Пешком до метро!",
+      "Панорамные апарты в башне Меркури"
+    ],
+    "description": [
+      "Идут показы с датой заселения после 23.02.2025.2-комнатный видовой пентхаус площадью 65.5 кв.м. с высокими потолками 3,6 м, панорамным остеклением и завораживающим видом на Триумфальную арку и Поклонную гору от ДОМ РФ",
+      "Cдaeтся кваpтиpа-студия с дизайнеpским pемoнтoм.",
+      "Сдаётся просторная 1-комнатная квартира 50 м² с евроремонтом и совмещённым санузлом в ЖК бизнес-класса Сердце Столицы!",
+      "Роскошные апартаменты в башне Mercury Tower  Москва-Сити"
+    ],
+    "houseImages": [
+      "https://images.cdn-cian.ru/images/2399639218-4.jpg",
+      "https://images.cdn-cian.ru/images/2347835113-4.jpg",
+      "https://images.cdn-cian.ru/images/2352018109-4.jpg",
+      "https://images.cdn-cian.ru/images/kvartira-moskva-1y-krasnogvardeyskiy-proezd-2378816333-4.jpg"
+    ],
+    "username": [
+      "Иван Иванов",
+      "Петр Петров",
+      "Сеня Сенявин",
+      "Рома Романов"
+    ],
+    "email": [
+      "test@mail.ru",
+      "admin@mail.ru",
+      "shrek@mail.ru",
+      "mail@mail.ru"
+    ],
+    "avatarImage": [
+      "https://static10.tgstat.ru/channels/_0/6b/6bb8cd44cbf8fd6ff6cdc2a8fcc7af0f.jpg",
+      "https://telegra.ph/file/38e46e15fa3a94d8cb61d.jpg",
+      "https://www.kino-teatr.ru/news/8994/90430.jpg",
+      "https://www.kino-teatr.ru/news/9262/92312.jpg"
+    ]
+  }
+}
