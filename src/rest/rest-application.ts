@@ -17,6 +17,7 @@ export class RestApplication {
     @inject(Component.Config) private readonly config: Config<RestSchema>,
     @inject(Component.DatabaseClient) private readonly databaseClient: DatabaseClient,
     @inject(Component.CategoryController) private readonly categoryController: Controller,
+    // @inject(Component.ExceptionFilter) private readonly appExceptionFilter: ExceptionFilter,
     @inject(Component.UserController) private readonly userController: Controller,
     @inject(Component.OfferController) private readonly offerController: Controller,
     @inject(Component.CommentController) private readonly commentController: Controller,
@@ -50,9 +51,18 @@ export class RestApplication {
 
   private async _initMiddleware() {
     this.server.use(express.json());
+    this.server.use(
+      '/upload',
+      express.static(this.config.get('UPLOAD_DIRECTORY'))
+    );
   }
 
+  // private async _initExceptionFilters() {
+  //   this.server.use(this.appExceptionFilter.catch.bind(this.appExceptionFilter));
+  // }
+
   public async init() {
+    console.log("FFFFFFFFFFFFFFFFFF")
     this.logger.info('Application initialization');
 
     this.logger.info('Init database…');
@@ -66,7 +76,11 @@ export class RestApplication {
     this.logger.info('Init controllers');
     await this._initControllers();
     this.logger.info('Controller initialization completed');
-    
+
+    // this.logger.info('Init exception filters');
+    // await this._initExceptionFilters();
+    // this.logger.info('Exception filters initialization compleated');
+
     this.logger.info('Try to init server…');
     await this._initServer();
     this.logger.info(`🚀 Server started on http://localhost:${this.config.get('PORT')}`);

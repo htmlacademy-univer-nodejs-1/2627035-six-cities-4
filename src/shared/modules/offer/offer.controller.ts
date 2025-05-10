@@ -6,15 +6,16 @@ import {
   HttpMethod,
   ValidateDtoMiddleware,
   ValidateObjectIdMiddleware,
-} from '../../libs/rest';
-import { Component } from '../../types';
-import { Logger } from '../../libs/logger';
+  DocumentExistsMiddleware,
+} from '../../libs/rest/index.js';
+import { Component } from '../../types/index.js';
+import { Logger } from '../../libs/logger/index.js';
 import { OfferService } from './offer-service.interface.js';
 import { ParamOfferId } from './type/param-offerid.type.js';
-import { fillDTO } from '../../helpers';
+import { fillDTO } from '../../helpers/index.js';
 import { OfferRdo } from './rdo/offer.rdo.js';
 import { UpdateOfferDto } from './dto/update-offer.dto.js';
-import { CommentRdo, CommentService } from '../comment';
+import { CommentRdo, CommentService } from '../comment/index.js';
 import { DEFAULT_DISCUSSED_OFFER_COUNT, DEFAULT_NEW_OFFER_COUNT } from './offer.constant.js';
 import { CreateOfferDto } from './dto/create-offer.dto.js';
 import { CreateOfferRequest } from './type/create-offer-request.type.js';
@@ -35,7 +36,8 @@ export default class OfferController extends BaseController {
       method: HttpMethod.Get,
       handler: this.show,
       middlewares: [
-        new ValidateObjectIdMiddleware('offerId')
+        new ValidateObjectIdMiddleware('offerId'),
+        new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId'),
       ]
     });
     this.addRoute({ path: '/', method: HttpMethod.Get, handler: this.index });
@@ -50,7 +52,8 @@ export default class OfferController extends BaseController {
       method: HttpMethod.Delete,
       handler: this.delete,
       middlewares: [
-        new ValidateObjectIdMiddleware('offerId')
+        new ValidateObjectIdMiddleware('offerId'),
+        new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId')
       ]
     });
     this.addRoute({
@@ -59,7 +62,8 @@ export default class OfferController extends BaseController {
       handler: this.update,
       middlewares: [
         new ValidateObjectIdMiddleware('offerId'),
-        new ValidateDtoMiddleware(UpdateOfferDto)
+        new ValidateDtoMiddleware(UpdateOfferDto),
+        new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId')
       ]
     });
     this.addRoute({
@@ -67,7 +71,8 @@ export default class OfferController extends BaseController {
       method: HttpMethod.Get,
       handler: this.getComments,
       middlewares: [
-        new ValidateObjectIdMiddleware('offerId')
+        new ValidateObjectIdMiddleware('offerId'),
+        new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId'),
       ]
     });
     this.addRoute({ path: '/bundles/new', method: HttpMethod.Get, handler: this.getNew });

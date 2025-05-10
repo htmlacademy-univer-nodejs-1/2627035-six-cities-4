@@ -9,3 +9,4 @@ export * from './user-type';
 export * from './component'
 export * from './category.type';
 export * from './sort-type.enum';
+export * from './document-exists.interface.js';
