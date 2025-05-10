@@ -6,3 +6,4 @@ export * from './offer';
 export * from './offer-type';
 export * from './user';
 export * from './user-type';
+export * from './component'

@@ -1,5 +1,5 @@
 //import got from 'got';
-import axios from 'axios'
+import axios from 'axios';
 
 import {MockServerData} from '../../shared/types';
 import {TsvFileWriter} from '../../shared/libs/file-writer';
