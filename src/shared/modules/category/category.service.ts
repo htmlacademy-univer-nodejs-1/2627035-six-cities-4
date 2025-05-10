@@ -1,8 +1,8 @@
 import { inject, injectable } from 'inversify';
 import { DocumentType, types } from '@typegoose/typegoose';
 
-import { Component, SortType } from '../../types';
-import { Logger } from '../../libs/logger';
+import { Component, SortType } from '../../types/index.js';
+import { Logger } from '../../libs/logger/index.js';
 import { CategoryService } from './category-service.interface.js';
 import { CategoryEntity } from './category.entity.js';
 import { CreateCategoryDto } from './dto/create-category.dto.js';
@@ -54,7 +54,7 @@ export class DefaultCategoryService implements CategoryService {
           },
         },
         { $addFields:
-            { id: { $toString: '$_id'}, offerCount: { $size: '$offers'} }
+          { id: { $toString: '$_id'}, offerCount: { $size: '$offers'} }
         },
         { $unset: 'offers' },
         { $limit: MAX_CATEGORIES_COUNT },
