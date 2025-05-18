@@ -57,7 +57,7 @@ export class RestApplication {
     );
   }
 
-  // private async _initExceptionFilters() {
+  //// private async _initExceptionFilters() {
   //   this.server.use(this.appExceptionFilter.catch.bind(this.appExceptionFilter));
   // }
 
